@@ -1,33 +1,35 @@
 import {MigrationInterface, QueryRunner, Table} from "typeorm";
 
-export default class CriaUsuarios1617577112696 implements MigrationInterface {
+export default class CriaClientes1617653978246 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name:'usuarios',
+            name: 'clientes',
             columns:[
                 {
-                    name: 'id',
+                    name:'id',
                     type:'uuid',
                     isPrimary:true,
-                    generationStrategy:'uuid',
                     default: 'uuid_generate_v4()',
                 },
                 {
                     name: 'nome',
-                    type:'varchar',
+                    type: 'varchar',
                 },
                 {
-                    name:'senha',
+                    name: 'endereco',
+                    type: 'varchar',
+                },
+                {
+                    name: 'telefone',
                     type:'varchar',
                 },
-              
             ],
         }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable('usuarios');
+        await queryRunner.dropTable('clientes');
     }
 
 }
